@@ -29,13 +29,6 @@ let ball5Y;
 let betweenB = [];
 let bulbs = [];
 
-//ball variable //JSON
-// let ball1 = {x: 400/25/2+400/25*2, y: 400/26*13+400/26/2 };
-// let ball2 = {x: 400/25/2+400/25*7, y:  400/26*13+400/26/2  };
-// let ball3 = {x: 400/25/2+400/25*12, y:  400/26*13+400/26/2  };
-// let ball4 = {x: 400/25/2+400/25*17, y:  400/26*13+400/26/2  };
-// let ball5 = {x: 400/25/2+400/25*22, y:  400/26*13+400/26/2  };
-
 //variable for background to change
 let bg = 0;
 
@@ -128,43 +121,29 @@ function draw() {
 
   bulb(slider1, 2);
   betweenbulb(slider1, slider2, 2, 7);
-  //betweenbulb1();
-  bulb2();
+
+  bulb(slider2, 7);
   betweenbulb(slider2, slider3, 7, 12);
-  //betweenbulb2();
-  bulb3();
+
+  bulb(slider3, 12);
   betweenbulb(slider3, slider4, 12, 17);
-  //betweenbulb3();
-  bulb4();
+
+  bulb(slider4, 17);
   betweenbulb(slider4, slider5, 17, 22);
-  //betweenbulb4();
-  bulb5();
 
-  bulbsound();
+  bulb(slider5, 22);
+  bulbSound(slider1, osc1, 0.2, 0.1);
+  bulbSound(slider2, osc2, 2, 0.1);
+  bulbSound(slider3, osc3, 3, 0.1);
+  bulbSound(slider4, osc4, 4, 0.3);
+  bulbSound(slider4, osc4, 0.1, 0.05);
 }
 
-function bulbsound() {
-  let f1 = BASE * ratios[slider1.value() / 0.2];
-  osc1.freq(f1);
-  osc1.amp(0.1);
-
-  let f2 = BASE * ratios[slider2.value() / 2];
-  osc2.freq(f2);
-  osc2.amp(0.1);
-
-  let f3 = BASE * ratios[slider3.value() / 3];
-  osc3.freq(f3);
-  osc3.amp(0.1);
-
-  let f4 = BASE * ratios[slider4.value() / 4];
-  osc4.freq(f4);
-  osc4.amp(0.3);
-
-  let f5 = BASE * ratios[slider5.value() / 0.1];
-  osc5.freq(f5);
-  osc5.amp(0.05);
+function bulbSound(slider, osc, number, amp) {
+  let f1 = BASE * ratios[slider.value() / number];
+  osc.freq(f1);
+  osc.amp(amp);
 }
-//y postion divided by ratio from 1-2 by diatonic scales(I included sharp and flat so there are 12 notes+1 mediaum Do and starting from the axis row number 13, up would be Do to medium Do in positive, and down would be Do to medium Do in negative))
 
 function bulb(slider, number) {
   ellipse(
@@ -173,25 +152,6 @@ function bulb(slider, number) {
     colW,
     rowH
   );
-}
-function bulb1() {
-  bulb(slider1, 2);
-}
-
-function bulb2() {
-  bulb(slider2, 7);
-}
-
-function bulb3() {
-  bulb(slider3, 12);
-}
-
-function bulb4() {
-  bulb(slider4, 17);
-}
-
-function bulb5() {
-  bulb(slider5, 22);
 }
 
 function betweenbulb(slider2, slider3, slider2Value, slider3Value) {
