@@ -154,6 +154,29 @@ function bulb(slider, number) {
   );
 }
 
+const ellipseX = (value) => {
+  return 400 / 25 / 2 + (400 / 25) * value - 1 * colW;
+};
+
+const ellipseX1 = (value) => {
+  return 400 / 25 / 2 + (400 / 25) * value + 2 * colW;
+};
+
+const ellipseX2 = (value) => {
+  return 400 / 25 / 2 + (400 / 25) * value - 2 * colW;
+};
+
+const ellipseX3 = (value) => {
+  return 400 / 25 / 2 + (400 / 25) * value + 1 * colW;
+};
+
+const ellipseY1 = (value, a) => {
+  return (value.value() + 2) * rowH + rowH * a + 400 / 26 / 2;
+};
+const ellipseY = (value, a) => {
+  return (value.value() + 2) * rowH + rowH * a + 400 / 26 / 2;
+};
+
 function betweenbulb(slider2, slider3, slider2Value, slider3Value) {
   if (
     slider3.value() > slider2.value() &&
@@ -161,27 +184,22 @@ function betweenbulb(slider2, slider3, slider2Value, slider3Value) {
   ) {
     if ((slider3.value() - slider2.value()) % 2 == 0) {
       for (let a = 0; a < abs(slider3.value() - slider2.value() - 2) / 2; a++) {
+        ellipse(ellipseX1(slider2Value), ellipseY1(slider2, a), colW, rowH); //col%5=4
         ellipse(
-          400 / 25 / 2 + (400 / 25) * slider2Value + 2 * colW,
-          (slider2.value() + 2) * rowH + rowH * a + 400 / 26 / 2,
-          colW,
-          rowH
-        ); //col%5=4
-        ellipse(
-          400 / 25 / 2 + (400 / 25) * slider3Value - 2 * colW,
+          ellipseX2(slider3Value),
           (slider3.value() - 2) * rowH - rowH * a + 400 / 26 / 2,
           colW,
           rowH
         ); //col%5=5
       }
       ellipse(
-        400 / 25 / 2 + (400 / 25) * slider2Value + 1 * colW,
+        ellipseX3(slider2Value),
         (slider2.value() + 1) * rowH + 400 / 26 / 2,
         colW,
         rowH
       ); //col%5=3
       ellipse(
-        400 / 25 / 2 + (400 / 25) * slider3Value - 1 * colW,
+        ellipseX(slider3Value),
         (slider3.value() - 1) * rowH + 400 / 26 / 2,
         colW,
         rowH
@@ -190,14 +208,9 @@ function betweenbulb(slider2, slider3, slider2Value, slider3Value) {
 
     if ((slider3.value() - slider2.value()) % 2 == 1) {
       for (let a = 0; a < abs(slider3.value() - slider2.value() - 2) / 2; a++) {
+        ellipse(ellipseX1(slider2Value), ellipseY1(slider2, a), colW, rowH); //col%5=4
         ellipse(
-          400 / 25 / 2 + (400 / 25) * slider2Value + 2 * colW,
-          (slider2.value() + 2) * rowH + rowH * a + 400 / 26 / 2,
-          colW,
-          rowH
-        ); //col%5=4
-        ellipse(
-          400 / 25 / 2 + (400 / 25) * slider3Value - 2 * colW,
+          ellipseX2(slider3Value),
           (slider3.value() - 2) * rowH - rowH * a + 400 / 26 / 2,
           colW,
           rowH
@@ -206,13 +219,13 @@ function betweenbulb(slider2, slider3, slider2Value, slider3Value) {
 
       // ellipse(400/25/2+400/25*7-1*colW,(slider2.value()+1)*rowH+400/26/2,colW,rowH);//col%5=1
       ellipse(
-        400 / 25 / 2 + (400 / 25) * slider2Value + 1 * colW,
+        ellipseX3(slider2Value),
         (slider2.value() + 1) * rowH + 400 / 26 / 2,
         colW,
         rowH
       ); //col%5=3
       ellipse(
-        400 / 25 / 2 + (400 / 25) * slider3Value - 1 * colW,
+        ellipseX(slider3Value),
         (slider3.value() - 1) * rowH + 400 / 26 / 2,
         colW,
         rowH
@@ -228,13 +241,13 @@ function betweenbulb(slider2, slider3, slider2Value, slider3Value) {
       //if-1
       for (let a = 0; a < abs(slider2.value() - slider3.value() - 2) / 2; a++) {
         ellipse(
-          400 / 25 / 2 + (400 / 25) * slider2Value + 2 * colW,
+          ellipseX1(slider2Value),
           (slider2.value() - 2) * rowH - rowH * a + 400 / 26 / 2,
           colW,
           rowH
         ); //col%5=4
         ellipse(
-          400 / 25 / 2 + (400 / 25) * slider3Value - 2 * colW,
+          ellipseX2(slider3Value),
           (slider3.value() + 2) * rowH + rowH * a + 400 / 26 / 2,
           colW,
           rowH
@@ -242,13 +255,13 @@ function betweenbulb(slider2, slider3, slider2Value, slider3Value) {
       }
       // ellipse(400/25/2+400/25*7-1*colW,(slider2.value()-1)*rowH+400/26/2,colW,rowH);//col%5=1
       ellipse(
-        400 / 25 / 2 + (400 / 25) * slider2Value + 1 * colW,
+        ellipseX3(slider2Value),
         (slider2.value() - 1) * rowH + 400 / 26 / 2,
         colW,
         rowH
       ); //col%5=3
       ellipse(
-        400 / 25 / 2 + (400 / 25) * slider3Value - 1 * colW,
+        ellipseX(slider3Value),
         (slider3.value() + 1) * rowH + 400 / 26 / 2,
         colW,
         rowH
@@ -259,13 +272,13 @@ function betweenbulb(slider2, slider3, slider2Value, slider3Value) {
       //if-3
       for (let a = 0; a < abs(slider2.value() - slider3.value() - 2) / 2; a++) {
         ellipse(
-          400 / 25 / 2 + (400 / 25) * slider2Value + 2 * colW,
+          ellipseX1(slider2Value),
           (slider2.value() - 2) * rowH - rowH * a + 400 / 26 / 2,
           colW,
           rowH
         ); //col%5=4
         ellipse(
-          400 / 25 / 2 + (400 / 25) * slider3Value - 2 * colW,
+          ellipseX2(slider3Value),
           (slider3.value() + 2) * rowH + rowH * a + 400 / 26 / 2,
           colW,
           rowH
@@ -273,13 +286,13 @@ function betweenbulb(slider2, slider3, slider2Value, slider3Value) {
       }
       // ellipse(400/25/2+400/25*7-1*colW,(slider2.value()-1)*rowH+400/26/2,colW,rowH);//col%5=1
       ellipse(
-        400 / 25 / 2 + (400 / 25) * slider2Value + 1 * colW,
+        ellipseX3(slider2Value),
         (slider2.value() - 1) * rowH + 400 / 26 / 2,
         colW,
         rowH
       ); //col%5=3
       ellipse(
-        400 / 25 / 2 + (400 / 25) * slider3Value - 1 * colW,
+        ellipseX(slider3Value),
         (slider3.value() + 1) * rowH + 400 / 26 / 2,
         colW,
         rowH
@@ -290,25 +303,25 @@ function betweenbulb(slider2, slider3, slider2Value, slider3Value) {
   if (slider2.value() == slider3.value()) {
     // ellipse(400/25/2+400/25*7-1*colW,(slider2.value())*rowH+400/26/2,colW,rowH);//col%5=1
     ellipse(
-      400 / 25 / 2 + (400 / 25) * slider2Value + 1 * colW,
+      ellipseX3(slider2Value),
       slider2.value() * rowH + 400 / 26 / 2,
       colW,
       rowH
     ); //col%5=3
     ellipse(
-      400 / 25 / 2 + (400 / 25) * slider2Value + 2 * colW,
+      ellipseX1(slider2Value),
       slider2.value() * rowH + 400 / 26 / 2,
       colW,
       rowH
     ); //col%5=4
     ellipse(
-      400 / 25 / 2 + (400 / 25) * slider3Value - 2 * colW,
+      ellipseX2(slider3Value),
       slider3.value() * rowH + 400 / 26 / 2,
       colW,
       rowH
     ); //col%5=5
     ellipse(
-      400 / 25 / 2 + (400 / 25) * slider3Value - 1 * colW,
+      ellipseX(slider3Value),
       slider3.value() * rowH + 400 / 26 / 2,
       colW,
       rowH
@@ -317,26 +330,26 @@ function betweenbulb(slider2, slider3, slider2Value, slider3Value) {
 
   if (slider3.value() - slider2.value() == 1) {
     ellipse(
-      400 / 25 / 2 + (400 / 25) * slider2Value + 2 * colW,
+      ellipseX1(slider2Value),
       (slider2.value() + 1) * rowH + 400 / 26 / 2,
       colW,
       rowH
     ); //col%5=4
     ellipse(
-      400 / 25 / 2 + (400 / 25) * slider3Value - 2 * colW,
+      ellipseX2(slider3Value),
       slider3.value() * rowH + 400 / 26 / 2,
       colW,
       rowH
     ); //col%5=5
     // ellipse(400/25/2+400/25*7-1*colW,(slider2.value()+1)*rowH+400/26/2,colW,rowH);//col%5=1
     ellipse(
-      400 / 25 / 2 + (400 / 25) * slider2Value + 1 * colW,
+      ellipseX3(slider2Value),
       slider2.value() * rowH + 400 / 26 / 2,
       colW,
       rowH
     ); //col%5=3
     ellipse(
-      400 / 25 / 2 + (400 / 25) * slider3Value - 1 * colW,
+      ellipseX(slider3Value),
       (slider3.value() - 1) * rowH + 400 / 26 / 2,
       colW,
       rowH
@@ -344,26 +357,26 @@ function betweenbulb(slider2, slider3, slider2Value, slider3Value) {
   }
   if (slider3.value() - slider2.value() == 2) {
     ellipse(
-      400 / 25 / 2 + (400 / 25) * slider2Value + 2 * colW,
+      ellipseX1(slider2Value),
       (slider2.value() + 1) * rowH + 400 / 26 / 2,
       colW,
       rowH
     ); //col%5=4
     ellipse(
-      400 / 25 / 2 + (400 / 25) * slider3Value - 2 * colW,
+      ellipseX2(slider3Value),
       slider3.value() * rowH + 400 / 26 / 2,
       colW,
       rowH
     ); //col%5=5
     // ellipse(400/25/2+400/25*7-1*colW,(slider2.value())*rowH+400/26/2,colW,rowH);//col%5=1
     ellipse(
-      400 / 25 / 2 + (400 / 25) * slider2Value + 1 * colW,
+      ellipseX3(slider2Value),
       slider2.value() * rowH + 400 / 26 / 2,
       colW,
       rowH
     ); //col%5=3
     ellipse(
-      400 / 25 / 2 + (400 / 25) * slider3Value - 1 * colW,
+      ellipseX(slider3Value),
       (slider3.value() - 1) * rowH + 400 / 26 / 2,
       colW,
       rowH
@@ -371,26 +384,26 @@ function betweenbulb(slider2, slider3, slider2Value, slider3Value) {
   }
   if (slider3.value() - slider2.value() == 3) {
     ellipse(
-      400 / 25 / 2 + (400 / 25) * slider2Value + 2 * colW,
+      ellipseX1(slider2Value),
       (slider2.value() + 1) * rowH + 400 / 26 / 2,
       colW,
       rowH
     ); //col%5=4
     ellipse(
-      400 / 25 / 2 + (400 / 25) * slider3Value - 2 * colW,
+      ellipseX2(slider3Value),
       (slider3.value() - 1) * rowH + 400 / 26 / 2,
       colW,
       rowH
     ); //col%5=5
     // ellipse(400/25/2+400/25*7-1*colW,(slider2.value()+1)*rowH+400/26/2,colW,rowH);//col%5=1
     ellipse(
-      400 / 25 / 2 + (400 / 25) * slider2Value + 1 * colW,
+      ellipseX3(slider2Value),
       (slider2.value() + 1) * rowH + 400 / 26 / 2,
       colW,
       rowH
     ); //col%5=3
     ellipse(
-      400 / 25 / 2 + (400 / 25) * slider3Value - 1 * colW,
+      ellipseX(slider3Value),
       (slider3.value() - 1) * rowH + 400 / 26 / 2,
       colW,
       rowH
@@ -399,26 +412,26 @@ function betweenbulb(slider2, slider3, slider2Value, slider3Value) {
 
   if (slider2.value() - slider3.value() == 1) {
     ellipse(
-      400 / 25 / 2 + (400 / 25) * slider2Value + 2 * colW,
+      ellipseX1(slider2Value),
       (slider2.value() - 1) * rowH + 400 / 26 / 2,
       colW,
       rowH
     ); //col%5=4
     ellipse(
-      400 / 25 / 2 + (400 / 25) * slider3Value - 2 * colW,
+      ellipseX2(slider3Value),
       slider3.value() * rowH + 400 / 26 / 2,
       colW,
       rowH
     ); //col%5=5
     // ellipse(400/25/2+400/25*7-1*colW,(slider2.value()+1)*rowH+400/26/2,colW,rowH);//col%5=1
     ellipse(
-      400 / 25 / 2 + (400 / 25) * slider2Value + 1 * colW,
+      ellipseX3(slider2Value),
       slider2.value() * rowH + 400 / 26 / 2,
       colW,
       rowH
     ); //col%5=3
     ellipse(
-      400 / 25 / 2 + (400 / 25) * slider3Value - 1 * colW,
+      ellipseX(slider3Value),
       (slider3.value() - 1) * rowH + 400 / 26 / 2,
       colW,
       rowH
@@ -426,13 +439,13 @@ function betweenbulb(slider2, slider3, slider2Value, slider3Value) {
   }
   if (slider2.value() - slider3.value() == 2) {
     ellipse(
-      400 / 25 / 2 + (400 / 25) * slider2Value + 2 * colW,
+      ellipseX1(slider2Value),
       (slider2.value() - 1) * rowH + 400 / 26 / 2,
       colW,
       rowH
     ); //col%5=4
     ellipse(
-      400 / 25 / 2 + (400 / 25) * slider3Value - 2 * colW,
+      ellipseX2(slider3Value),
       (slider3.value() + 1) * rowH + 400 / 26 / 2,
       colW,
       rowH
@@ -444,13 +457,13 @@ function betweenbulb(slider2, slider3, slider2Value, slider3Value) {
       rowH
     ); //col%5=1
     ellipse(
-      400 / 25 / 2 + (400 / 25) * slider2Value + 1 * colW,
+      ellipseX3(slider2Value),
       (slider2.value() - 1) * rowH + 400 / 26 / 2,
       colW,
       rowH
     ); //col%5=3
     ellipse(
-      400 / 25 / 2 + (400 / 25) * slider3Value - 1 * colW,
+      ellipseX(slider3Value),
       (slider3.value() + 1) * rowH + 400 / 26 / 2,
       colW,
       rowH
@@ -458,26 +471,26 @@ function betweenbulb(slider2, slider3, slider2Value, slider3Value) {
   }
   if (slider2.value() - slider3.value() == 3) {
     ellipse(
-      400 / 25 / 2 + (400 / 25) * slider2Value + 2 * colW,
+      ellipseX1(slider2Value),
       (slider2.value() - 1) * rowH + 400 / 26 / 2,
       colW,
       rowH
     ); //col%5=4
     ellipse(
-      400 / 25 / 2 + (400 / 25) * slider3Value - 2 * colW,
+      ellipseX2(slider3Value),
       (slider3.value() + 2) * rowH + 400 / 26 / 2,
       colW,
       rowH
     ); //col%5=5
     // ellipse(400/25/2+400/25*7-1*colW,(slider2.value()-1)*rowH+400/26/2,colW,rowH);//col%5=1
     ellipse(
-      400 / 25 / 2 + (400 / 25) * slider2Value + 1 * colW,
+      ellipseX3(slider2Value),
       (slider2.value() - 1) * rowH + 400 / 26 / 2,
       colW,
       rowH
     ); //col%5=3
     ellipse(
-      400 / 25 / 2 + (400 / 25) * slider3Value - 1 * colW,
+      ellipseX(slider3Value),
       (slider3.value() + 1) * rowH + 400 / 26 / 2,
       colW,
       rowH
