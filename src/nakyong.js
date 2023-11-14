@@ -173,8 +173,23 @@ const ellipseX3 = (value) => {
 const ellipseY1 = (value, a) => {
   return (value.value() + 2) * rowH + rowH * a + 400 / 26 / 2;
 };
-const ellipseY = (value, a) => {
+const ellipseY2 = (value, a) => {
   return (value.value() + 2) * rowH + rowH * a + 400 / 26 / 2;
+};
+
+const ellipseY3 = (value) => {
+  return (value.value() - 1) * rowH + 400 / 26 / 2;
+};
+
+const ellipseY4 = (value) => {
+  return (value.value() + 1) * rowH + 400 / 26 / 2;
+};
+const ellipseY5 = (value) => {
+  return value.value() * rowH + 400 / 26 / 2;
+};
+
+const ellipseY6 = (value, a) => {
+  return (value.value() - 2) * rowH - rowH * a + 400 / 26 / 2;
 };
 
 function betweenbulb(slider2, slider3, slider2Value, slider3Value) {
@@ -185,51 +200,21 @@ function betweenbulb(slider2, slider3, slider2Value, slider3Value) {
     if ((slider3.value() - slider2.value()) % 2 == 0) {
       for (let a = 0; a < abs(slider3.value() - slider2.value() - 2) / 2; a++) {
         ellipse(ellipseX1(slider2Value), ellipseY1(slider2, a), colW, rowH); //col%5=4
-        ellipse(
-          ellipseX2(slider3Value),
-          (slider3.value() - 2) * rowH - rowH * a + 400 / 26 / 2,
-          colW,
-          rowH
-        ); //col%5=5
+        ellipse(ellipseX2(slider3Value), ellipseY6(slider3, a), colW, rowH); //col%5=5
       }
-      ellipse(
-        ellipseX3(slider2Value),
-        (slider2.value() + 1) * rowH + 400 / 26 / 2,
-        colW,
-        rowH
-      ); //col%5=3
-      ellipse(
-        ellipseX(slider3Value),
-        (slider3.value() - 1) * rowH + 400 / 26 / 2,
-        colW,
-        rowH
-      ); //col%5=6
+      ellipse(ellipseX3(slider2Value), ellipseY4(slider2), colW, rowH); //col%5=3
+      ellipse(ellipseX(slider3Value), ellipseY3(slider3), colW, rowH); //col%5=6
     }
 
     if ((slider3.value() - slider2.value()) % 2 == 1) {
       for (let a = 0; a < abs(slider3.value() - slider2.value() - 2) / 2; a++) {
         ellipse(ellipseX1(slider2Value), ellipseY1(slider2, a), colW, rowH); //col%5=4
-        ellipse(
-          ellipseX2(slider3Value),
-          (slider3.value() - 2) * rowH - rowH * a + 400 / 26 / 2,
-          colW,
-          rowH
-        ); //col%5=5
+        ellipse(ellipseX2(slider3Value), ellipseY6(slider3, a), colW, rowH); //col%5=5
       }
 
       // ellipse(400/25/2+400/25*7-1*colW,(slider2.value()+1)*rowH+400/26/2,colW,rowH);//col%5=1
-      ellipse(
-        ellipseX3(slider2Value),
-        (slider2.value() + 1) * rowH + 400 / 26 / 2,
-        colW,
-        rowH
-      ); //col%5=3
-      ellipse(
-        ellipseX(slider3Value),
-        (slider3.value() - 1) * rowH + 400 / 26 / 2,
-        colW,
-        rowH
-      ); //col%5=6
+      ellipse(ellipseX3(slider2Value), ellipseY4(slider2), colW, rowH); //col%5=3
+      ellipse(ellipseX(slider3Value), ellipseY3(slider3), colW, rowH); //col%5=6
     }
   }
 
@@ -240,242 +225,77 @@ function betweenbulb(slider2, slider3, slider2Value, slider3Value) {
     if (abs(slider3.value() - slider2.value()) % 2 == 0) {
       //if-1
       for (let a = 0; a < abs(slider2.value() - slider3.value() - 2) / 2; a++) {
-        ellipse(
-          ellipseX1(slider2Value),
-          (slider2.value() - 2) * rowH - rowH * a + 400 / 26 / 2,
-          colW,
-          rowH
-        ); //col%5=4
-        ellipse(
-          ellipseX2(slider3Value),
-          (slider3.value() + 2) * rowH + rowH * a + 400 / 26 / 2,
-          colW,
-          rowH
-        ); //col%5=5
+        ellipse(ellipseX1(slider2Value), ellipseY6(slider2, a), colW, rowH); //col%5=4
+        ellipse(ellipseX2(slider3Value), ellipseY1(slider3, a), colW, rowH); //col%5=5
       }
       // ellipse(400/25/2+400/25*7-1*colW,(slider2.value()-1)*rowH+400/26/2,colW,rowH);//col%5=1
-      ellipse(
-        ellipseX3(slider2Value),
-        (slider2.value() - 1) * rowH + 400 / 26 / 2,
-        colW,
-        rowH
-      ); //col%5=3
-      ellipse(
-        ellipseX(slider3Value),
-        (slider3.value() + 1) * rowH + 400 / 26 / 2,
-        colW,
-        rowH
-      ); //col%5=6
+      ellipse(ellipseX3(slider2Value), ellipseY3(slider2), colW, rowH); //col%5=3
+      ellipse(ellipseX(slider3Value), ellipseY4(slider3), colW, rowH); //col%5=6
     }
 
     if (abs(slider3.value() - slider2.value()) % 2 == 1) {
       //if-3
       for (let a = 0; a < abs(slider2.value() - slider3.value() - 2) / 2; a++) {
-        ellipse(
-          ellipseX1(slider2Value),
-          (slider2.value() - 2) * rowH - rowH * a + 400 / 26 / 2,
-          colW,
-          rowH
-        ); //col%5=4
-        ellipse(
-          ellipseX2(slider3Value),
-          (slider3.value() + 2) * rowH + rowH * a + 400 / 26 / 2,
-          colW,
-          rowH
-        ); //col%5=5
+        ellipse(ellipseX1(slider2Value), ellipseY6(slider2, a), colW, rowH); //col%5=4
+        ellipse(ellipseX2(slider3Value), ellipseY1(slider3, a), colW, rowH); //col%5=5
       }
       // ellipse(400/25/2+400/25*7-1*colW,(slider2.value()-1)*rowH+400/26/2,colW,rowH);//col%5=1
-      ellipse(
-        ellipseX3(slider2Value),
-        (slider2.value() - 1) * rowH + 400 / 26 / 2,
-        colW,
-        rowH
-      ); //col%5=3
-      ellipse(
-        ellipseX(slider3Value),
-        (slider3.value() + 1) * rowH + 400 / 26 / 2,
-        colW,
-        rowH
-      ); //col%5=6
+      ellipse(ellipseX3(slider2Value), ellipseY3(slider2), colW, rowH); //col%5=3
+      ellipse(ellipseX(slider3Value), ellipseY4(slider3), colW, rowH); //col%5=6
     }
   }
 
   if (slider2.value() == slider3.value()) {
     // ellipse(400/25/2+400/25*7-1*colW,(slider2.value())*rowH+400/26/2,colW,rowH);//col%5=1
-    ellipse(
-      ellipseX3(slider2Value),
-      slider2.value() * rowH + 400 / 26 / 2,
-      colW,
-      rowH
-    ); //col%5=3
-    ellipse(
-      ellipseX1(slider2Value),
-      slider2.value() * rowH + 400 / 26 / 2,
-      colW,
-      rowH
-    ); //col%5=4
-    ellipse(
-      ellipseX2(slider3Value),
-      slider3.value() * rowH + 400 / 26 / 2,
-      colW,
-      rowH
-    ); //col%5=5
-    ellipse(
-      ellipseX(slider3Value),
-      slider3.value() * rowH + 400 / 26 / 2,
-      colW,
-      rowH
-    ); //col%5=6
+    ellipse(ellipseX3(slider2Value), ellipseY5(slider2), colW, rowH); //col%5=3
+    ellipse(ellipseX1(slider2Value), ellipseY5(slider2), colW, rowH); //col%5=4
+    ellipse(ellipseX2(slider3Value), ellipseY5(slider3), colW, rowH); //col%5=5
+    ellipse(ellipseX(slider3Value), ellipseY5(slider3), colW, rowH); //col%5=6
   }
 
   if (slider3.value() - slider2.value() == 1) {
-    ellipse(
-      ellipseX1(slider2Value),
-      (slider2.value() + 1) * rowH + 400 / 26 / 2,
-      colW,
-      rowH
-    ); //col%5=4
-    ellipse(
-      ellipseX2(slider3Value),
-      slider3.value() * rowH + 400 / 26 / 2,
-      colW,
-      rowH
-    ); //col%5=5
+    ellipse(ellipseX1(slider2Value), ellipseY4(slider2), colW, rowH); //col%5=4
+    ellipse(ellipseX2(slider3Value), ellipseY5(slider3), colW, rowH); //col%5=5
     // ellipse(400/25/2+400/25*7-1*colW,(slider2.value()+1)*rowH+400/26/2,colW,rowH);//col%5=1
-    ellipse(
-      ellipseX3(slider2Value),
-      slider2.value() * rowH + 400 / 26 / 2,
-      colW,
-      rowH
-    ); //col%5=3
-    ellipse(
-      ellipseX(slider3Value),
-      (slider3.value() - 1) * rowH + 400 / 26 / 2,
-      colW,
-      rowH
-    ); //col%5=6
+    ellipse(ellipseX3(slider2Value), ellipseY5(slider2), colW, rowH); //col%5=3
+    ellipse(ellipseX(slider3Value), ellipseY3(slider3), colW, rowH); //col%5=6
   }
   if (slider3.value() - slider2.value() == 2) {
-    ellipse(
-      ellipseX1(slider2Value),
-      (slider2.value() + 1) * rowH + 400 / 26 / 2,
-      colW,
-      rowH
-    ); //col%5=4
-    ellipse(
-      ellipseX2(slider3Value),
-      slider3.value() * rowH + 400 / 26 / 2,
-      colW,
-      rowH
-    ); //col%5=5
+    ellipse(ellipseX1(slider2Value), ellipseY4(slider2), colW, rowH); //col%5=4
+    ellipse(ellipseX2(slider3Value), ellipseY5(slider3), colW, rowH); //col%5=5
     // ellipse(400/25/2+400/25*7-1*colW,(slider2.value())*rowH+400/26/2,colW,rowH);//col%5=1
-    ellipse(
-      ellipseX3(slider2Value),
-      slider2.value() * rowH + 400 / 26 / 2,
-      colW,
-      rowH
-    ); //col%5=3
-    ellipse(
-      ellipseX(slider3Value),
-      (slider3.value() - 1) * rowH + 400 / 26 / 2,
-      colW,
-      rowH
-    ); //col%5=6
+    ellipse(ellipseX3(slider2Value), ellipseY5(slider2), colW, rowH); //col%5=3
+    ellipse(ellipseX(slider3Value), ellipseY3(slider3), colW, rowH); //col%5=6
   }
   if (slider3.value() - slider2.value() == 3) {
-    ellipse(
-      ellipseX1(slider2Value),
-      (slider2.value() + 1) * rowH + 400 / 26 / 2,
-      colW,
-      rowH
-    ); //col%5=4
-    ellipse(
-      ellipseX2(slider3Value),
-      (slider3.value() - 1) * rowH + 400 / 26 / 2,
-      colW,
-      rowH
-    ); //col%5=5
+    ellipse(ellipseX1(slider2Value), ellipseY4(slider2), colW, rowH); //col%5=4
+    ellipse(ellipseX2(slider3Value), ellipseY3(slider3), colW, rowH); //col%5=5
     // ellipse(400/25/2+400/25*7-1*colW,(slider2.value()+1)*rowH+400/26/2,colW,rowH);//col%5=1
-    ellipse(
-      ellipseX3(slider2Value),
-      (slider2.value() + 1) * rowH + 400 / 26 / 2,
-      colW,
-      rowH
-    ); //col%5=3
-    ellipse(
-      ellipseX(slider3Value),
-      (slider3.value() - 1) * rowH + 400 / 26 / 2,
-      colW,
-      rowH
-    ); //col%5=6
+    ellipse(ellipseX3(slider2Value), ellipseY4(slider2), colW, rowH); //col%5=3
+    ellipse(ellipseX(slider3Value), ellipseY3(slider3), colW, rowH); //col%5=6
   }
 
   if (slider2.value() - slider3.value() == 1) {
-    ellipse(
-      ellipseX1(slider2Value),
-      (slider2.value() - 1) * rowH + 400 / 26 / 2,
-      colW,
-      rowH
-    ); //col%5=4
-    ellipse(
-      ellipseX2(slider3Value),
-      slider3.value() * rowH + 400 / 26 / 2,
-      colW,
-      rowH
-    ); //col%5=5
+    ellipse(ellipseX1(slider2Value), ellipseY3(slider2), colW, rowH); //col%5=4
+    ellipse(ellipseX2(slider3Value), ellipseY5(slider3), colW, rowH); //col%5=5
     // ellipse(400/25/2+400/25*7-1*colW,(slider2.value()+1)*rowH+400/26/2,colW,rowH);//col%5=1
-    ellipse(
-      ellipseX3(slider2Value),
-      slider2.value() * rowH + 400 / 26 / 2,
-      colW,
-      rowH
-    ); //col%5=3
-    ellipse(
-      ellipseX(slider3Value),
-      (slider3.value() - 1) * rowH + 400 / 26 / 2,
-      colW,
-      rowH
-    ); //col%5=6
+    ellipse(ellipseX3(slider2Value), ellipseY5(slider2), colW, rowH); //col%5=3
+    ellipse(ellipseX(slider3Value), ellipseY3(slider3), colW, rowH); //col%5=6
   }
   if (slider2.value() - slider3.value() == 2) {
-    ellipse(
-      ellipseX1(slider2Value),
-      (slider2.value() - 1) * rowH + 400 / 26 / 2,
-      colW,
-      rowH
-    ); //col%5=4
-    ellipse(
-      ellipseX2(slider3Value),
-      (slider3.value() + 1) * rowH + 400 / 26 / 2,
-      colW,
-      rowH
-    ); //col%5=5
+    ellipse(ellipseX1(slider2Value), ellipseY3(slider2), colW, rowH); //col%5=4
+    ellipse(ellipseX2(slider3Value), ellipseY4(slider3), colW, rowH); //col%5=5
     ellipse(
       400 / 25 / 2 + (400 / 25) * slider2Value - 1 * colW,
-      (slider2.value() - 1) * rowH + 400 / 26 / 2,
+      ellipseY3(slider2),
       colW,
       rowH
     ); //col%5=1
-    ellipse(
-      ellipseX3(slider2Value),
-      (slider2.value() - 1) * rowH + 400 / 26 / 2,
-      colW,
-      rowH
-    ); //col%5=3
-    ellipse(
-      ellipseX(slider3Value),
-      (slider3.value() + 1) * rowH + 400 / 26 / 2,
-      colW,
-      rowH
-    ); //col%5=6
+    ellipse(ellipseX3(slider2Value), ellipseY3(slider2), colW, rowH); //col%5=3
+    ellipse(ellipseX(slider3Value), ellipseY4(slider3), colW, rowH); //col%5=6
   }
   if (slider2.value() - slider3.value() == 3) {
-    ellipse(
-      ellipseX1(slider2Value),
-      (slider2.value() - 1) * rowH + 400 / 26 / 2,
-      colW,
-      rowH
-    ); //col%5=4
+    ellipse(ellipseX1(slider2Value), ellipseY3(slider2), colW, rowH); //col%5=4
     ellipse(
       ellipseX2(slider3Value),
       (slider3.value() + 2) * rowH + 400 / 26 / 2,
@@ -483,17 +303,7 @@ function betweenbulb(slider2, slider3, slider2Value, slider3Value) {
       rowH
     ); //col%5=5
     // ellipse(400/25/2+400/25*7-1*colW,(slider2.value()-1)*rowH+400/26/2,colW,rowH);//col%5=1
-    ellipse(
-      ellipseX3(slider2Value),
-      (slider2.value() - 1) * rowH + 400 / 26 / 2,
-      colW,
-      rowH
-    ); //col%5=3
-    ellipse(
-      ellipseX(slider3Value),
-      (slider3.value() + 1) * rowH + 400 / 26 / 2,
-      colW,
-      rowH
-    ); //col%5=6
+    ellipse(ellipseX3(slider2Value), ellipseY3(slider2), colW, rowH); //col%5=3
+    ellipse(ellipseX(slider3Value), ellipseY4(slider3), colW, rowH); //col%5=6
   }
 }
