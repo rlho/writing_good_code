@@ -173,17 +173,15 @@ const ellipseX3 = (value) => {
 const ellipseY1 = (value, a) => {
   return (value.value() + 2) * rowH + rowH * a + 400 / 26 / 2;
 };
-const ellipseY2 = (value, a) => {
-  return (value.value() + 2) * rowH + rowH * a + 400 / 26 / 2;
+
+const ellipseY4 = (value) => {
+  return (value.value() + 1) * rowH + 400 / 26 / 2;
 };
 
 const ellipseY3 = (value) => {
   return (value.value() - 1) * rowH + 400 / 26 / 2;
 };
 
-const ellipseY4 = (value) => {
-  return (value.value() + 1) * rowH + 400 / 26 / 2;
-};
 const ellipseY5 = (value) => {
   return value.value() * rowH + 400 / 26 / 2;
 };
