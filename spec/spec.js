@@ -1,11 +1,24 @@
-describe("getRadian", function () {
-  it("return radian", function () {
-    expect(getRadian(1, 10, 10, 1)).toBe(-2.356194490192345);
-  });
-});
+describe("Interactive Music Visualization", function () {
+  let slider1;
 
-describe("getRadian", function () {
-  it("return radian", function () {
-    expect(getRadian(100, 100, 2, 2)).toBe(-3.9269908169872414);
+  beforeEach(function () {
+    slider1 = { value: jasmine.createSpy("value").and.returnValue(5) };
+
+    window.ellipse = jasmine.createSpy("ellipse");
+  });
+
+  describe("bulb1 function", function () {
+    it("should draw an ellipse at the correct position based on slider1 value", function () {
+      bulb1(slider1, 1, 1);
+
+      let expectedX = 400 / 25 / 2 + (400 / 25) * 2;
+      let expectedY = (400 / 26) * slider1.value() + 400 / 26 / 2;
+      expect(window.ellipse).toHaveBeenCalledWith(
+        expectedX,
+        expectedY,
+        jasmine.any(Number),
+        jasmine.any(Number)
+      );
+    });
   });
 });

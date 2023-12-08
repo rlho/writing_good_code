@@ -177,7 +177,7 @@ function draw() {
   drawingContext.shadowBlur = 30;
   drawingContext.shadowColor = "rgba(255,255,14,0.66)";
 
-  bulb1();
+  bulb1(slider1, CW, RH);
   betweenbulb1();
   bulb2();
   betweenbulb2();
@@ -219,13 +219,13 @@ function bulbsound() {
 }
 //y postion divided by ratio from 1-2 by diatonic scales(I included sharp and flat so there are 12 notes+1 mediaum Do and starting from the axis row number 13, up would be Do to medium Do in positive, and down would be Do to medium Do in negative))
 
-function bulb1() {
+function bulb1(slider, cw, rh) {
   // fill("rgb(253,253,242)",80);
   ellipse(
     400 / 25 / 2 + (400 / 25) * 2,
-    (400 / 26) * slider1.value() + 400 / 26 / 2,
-    CW,
-    RH
+    (400 / 26) * slider.value() + 400 / 26 / 2,
+    cw,
+    rh
   );
 
   // ellipse(CW/2+col*CW, ball.y,CW,RH);//col=2 MainBulb
